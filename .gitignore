@@ -1,0 +1,7 @@
+node_modules
+platziverse-agent/node_modules
+platziverse-api/node_modules
+platziverse-db/node_modules
+platziverse-mqtt/node_modules
+platziverse-web/node_modules
+.DS_Store

@@ -1,0 +1,21 @@
+mqtt pub -t 'agent/message' -h localhost -m 'hello platziverse'
+mqtt pub -t 'agent/message' -h localhost -m '{hello: 'platziverse'}'
+
+mqtt pub -t 'agent/message' -m '{"agent": { "uuid": "yyy", "name": "test", "username": "platzi", "pid": 10, "hostname": "platzibogota" }, "metrics": [{ "type": "memory", "value": 1001}, {"type": "temp", "value": "33"}]}'
+
+{
+	"agent": {
+		"uuid": "xxx",
+		"name": "Agent",
+		"username": "joaquinaraujojs",
+		"pid": 123,
+		"hostname": "platzi"
+	},
+	"metrics": [{
+		"type": "memory",
+		"value": "1024"
+	}, {
+		"type": "temp",
+		"value": "34"
+	}]
+}

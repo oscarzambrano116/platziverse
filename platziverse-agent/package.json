@@ -1,0 +1,18 @@
+{
+  "name": "platziverse-agent",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A simple IoT Platform - Agent",
+  "main": "index.js",
+  "author": "Oscar Zambrano",
+  "license": "MIT",
+  "devDependencies": {
+    "standard": "^11.0.1"
+  },
+  "dependencies": {
+    "debug": "^3.1.0",
+    "defaults": "^1.0.3",
+    "mqtt": "^2.17.0",
+    "uuid": "^3.2.1"
+  }
+}

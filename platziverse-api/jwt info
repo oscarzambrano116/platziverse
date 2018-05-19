@@ -1,0 +1,8 @@
+un token jwt consta de 3 partes
+
+- Cabezera (rojo)
+- Payload (morado)
+- Firma de verificacion (azul)
+
+-- token a string en node --
+Buffer.from(unToken, 'base64').toString()
