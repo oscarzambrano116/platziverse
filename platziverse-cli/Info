@@ -1,0 +1,5 @@
+-- #!/usr/bin/env node -> para correr archivos como scripts (hashbang sistemas unix)
+chmod +x platziverse.js -> para setear permisos
+console.log(process.argv) -> imprimir argumentos del process en node
+./platziverse.js --yes -> pasar argumentos
+./platziverse.js -a --name IoT --host localhost -> pasar argumentos

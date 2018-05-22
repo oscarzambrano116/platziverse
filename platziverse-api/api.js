@@ -81,26 +81,27 @@ api.get('/metrics/:uuid', auth(config.auth), guard.check(['metrics: read']), asy
     return next(e)
   }
 
-  if (!metrics || !metric.length) {
+  if (!metrics || !metrics.length) {
     return next(new Error(`Metrics not found for agent with uuid ${uuid}`))
   }
 
-  res.send({ metrics })
+  res.send(metrics)
 })
 
 api.get('/metrics/:uuid/:type', async (req, res, next) => {
   const { uuid, type } = req.params
 
+  debug('Prueba Oscar Z')
   debug(`request to /metrics/${uuid}/${type}`)
 
   let metrics = []
   try {
-    metrics = await Metrics.findByTypeAgentUuid(type, uuid)
+    metrics = await Metric.findByTypeAgentUuid(type, uuid)
   } catch (e) {
     return next(e)
   }
 
-  if (!metrics || !metric.length) {
+  if (!metrics || !metrics.length) {
     return next(new Error(`Metrics (${type}) not found for agent with uuid ${uuid}`))
   }
 
