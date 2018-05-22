@@ -1,5 +1,5 @@
 auth.sign({
-  username: 'platzi',
+  username: 'admin',
   admin: true,
   permissions: [
     'metrics: read'
