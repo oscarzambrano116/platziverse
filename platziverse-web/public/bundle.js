@@ -54,8 +54,6 @@ module.exports = {
       var metrics = void 0;
       try {
         metrics = await request(options);
-        console.log('-----metrics-----');
-        console.log(metrics);
       } catch (e) {
         this.error = e.error.error;
         return;
