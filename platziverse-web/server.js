@@ -21,45 +21,32 @@ const agent = new PlatziverseAgent()
 app.use(express.static(path.join(__dirname, 'public')))
 app.use('/', proxy)
 
-// Socket.io
+// Socket.io / WebSockets
 io.on('connect', socket => {
   debug(`Connected ${socket.id}`)
 
   pipe(agent, socket)
-
-  /*
-  agent.on('agent/message', payload => {
-    socket.emit('agent/message', payload)
-  })
-
-  agent.on('agent/connected', payload => {
-    socket.emit('agent/connected', payload)
-  })
-
-  agent.on('agent/disconnected', payload => {
-    socket.emit('agent/disconnected', payload)
-  })
-  */
 })
 
+// Express Error Handler
 app.use((err, req, res, next) => {
   debug(`Error: ${err.message}`)
 
   if (err.message.match(/not found/)) {
-    return res.status(404).send({ err: err.message })
+    return res.status(404).send({ error: err.message })
   }
 
   res.status(500).send({ error: err.message })
 })
 
 function handleFatalError (err) {
-  console.log(`${chalk.red('[fatal error]')} ${err.message}`)
-  console.log(err.stack)
+  console.error(`${chalk.red('[fatal error]')} ${err.message}`)
+  console.error(err.stack)
   process.exit(1)
 }
 
 process.on('uncaughtException', handleFatalError)
-process.on('unhandleRejection', handleFatalError)
+process.on('unhandledRejection', handleFatalError)
 
 server.listen(port, () => {
   console.log(`${chalk.green('[platziverse-web]')} server listening on port ${port}`)
