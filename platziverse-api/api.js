@@ -33,7 +33,7 @@ api.get('/agents', auth(config.auth), async (req, res, next) => {
   debug('A request has come to /agents')
 
   const { user } = req
-  
+
   if (!user || !user.username) {
     return next(new Error('Not authorized'))
   }
@@ -41,7 +41,7 @@ api.get('/agents', auth(config.auth), async (req, res, next) => {
   let agents = []
   try {
     if (user.admin) {
-      agents = await Agent.findConnected() 
+      agents = await Agent.findConnected()
     } else {
       agents = await Agent.findByUsername(user.username)
     }
@@ -56,7 +56,7 @@ api.get('/agent/:uuid', async (req, res, next) => {
 
   debug(`request to agent/${uuid}`)
 
-  let agent 
+  let agent
   try {
     agent = await Agent.findByUuid(uuid)
   } catch (e) {
@@ -91,7 +91,6 @@ api.get('/metrics/:uuid', auth(config.auth), guard.check(['metrics: read']), asy
 api.get('/metrics/:uuid/:type', async (req, res, next) => {
   const { uuid, type } = req.params
 
-  debug('Prueba Oscar Z')
   debug(`request to /metrics/${uuid}/${type}`)
 
   let metrics = []
