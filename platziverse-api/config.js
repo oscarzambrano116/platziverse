@@ -9,9 +9,9 @@ module.exports = {
     password: process.env.DB_PASS || 'admin',
     host: process.env.DB_HOST || 'localhost',
     dialect: 'postgres',
-    logging: msg => debug(msg),
+    logging: s => debug(s)
   },
   auth: {
-    secret: process.env.SECRET || 'platzi',
+    secret: process.env.SECRET || 'platzi'
   }
 }

@@ -12,7 +12,7 @@ const { parsePayload } = require('./utils')
 
 const options = {
   name: 'untitled',
-  username: 'admin',
+  username: 'platzi',
   interval: 5000,
   mqtt: {
     host: 'mqtt://localhost'

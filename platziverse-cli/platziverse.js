@@ -42,7 +42,7 @@ agent.on('agent/connected', payload => {
 
   if (!agents.has(uuid)) {
     agents.set(uuid, payload.agent)
-    agentMetrics(uuid, {})
+    agentMetrics.set(uuid, {})
   }
 
   renderData()
@@ -68,9 +68,9 @@ agent.on('agent/message', payload => {
     agentMetrics.set(uuid, {})
   }
 
-  const metrics = agentMetrics.get(uui)
-  
-  payload.metris.forEach(m => {
+  const metrics = agentMetrics.get(uuid)
+
+  payload.metrics.forEach(m => {
     const { type, value } = m
 
     if (!Array.isArray(metrics[type])) {
@@ -86,9 +86,9 @@ agent.on('agent/message', payload => {
       value,
       timestamp: moment(timestamp).format('HH:mm:ss')
     })
-
-    renderData()
   })
+
+  renderData()
 })
 
 tree.on('select', node => {
@@ -107,12 +107,11 @@ tree.on('select', node => {
   renderMetric()
 })
 
-function renderData() {
+function renderData () {
   const treeData = {}
   let idx = 0
-
   for (let [ uuid, val ] of agents) {
-    const title = `${val.name} - (${val.pid})`
+    const title = ` ${val.name} - (${val.pid})`
     treeData[title] = {
       uuid,
       agent: true,
@@ -121,7 +120,6 @@ function renderData() {
     }
 
     const metrics = agentMetrics.get(uuid)
-
     Object.keys(metrics).forEach(type => {
       const metric = {
         uuid,
@@ -129,9 +127,8 @@ function renderData() {
         metric: true
       }
 
-      const metricName = ` ${type} ${" ".repeat(1000)} ${idx++}`
+      const metricName = ` ${type} ${' '.repeat(1000)} ${idx++}`
       treeData[title].children[metricName] = metric
-
     })
   }
 
@@ -143,9 +140,9 @@ function renderData() {
   renderMetric()
 }
 
-function renderMetric() {
-  if(!selected.uuid && !selected.type) {
-    line.setData([{ x: [], y: [], title: ''}])
+function renderMetric () {
+  if (!selected.uuid && !selected.type) {
+    line.setData([{ x: [], y: [], title: '' }])
     screen.render()
     return
   }
