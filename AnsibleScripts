@@ -1,0 +1,8 @@
+- postgresql:
+ansible-galaxy install ANXS.postgresql
+
+- redis:
+ansible-galaxy install geerlingguy.redis
+
+- NGINX:
+ansible-galaxy install jdauphant.nginx
