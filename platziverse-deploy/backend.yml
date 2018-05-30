@@ -1,0 +1,9 @@
+---
+- hosts: backend-*
+  gather_facts: false
+  pre_tasks:
+    - name: Install Python 2
+      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+    - setup:
+  roles:
+    - database
