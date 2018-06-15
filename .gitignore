@@ -5,6 +5,5 @@ platziverse-db/node_modules
 platziverse-mqtt/node_modules
 platziverse-web/node_modules
 platziverse-cli/node_modules
-ssh
 .vagrant
 .DS_Store

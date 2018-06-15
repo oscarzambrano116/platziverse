@@ -1,0 +1,21 @@
+brew services start postgresql
+
+psql postgres -> para la consola y correr postgres
+CREATE ROLE platzi WITH LOGIN PASSWORD 'platzi';
+CREATE ROLE admin WITH LOGIN PASSWORD 'admin';
+CREATE DATABASE platziverse;
+GRANT ALL PRIVILEGES ON DATABASE platziverse TO platzi;
+GRANT ALL PRIVILEGES ON DATABASE platziverse TO admin;
+
+yarn run lint -- --fix -> para ejecutar standar y agregar los errores
+
+-- Postgres configuracion de conexiones con password erroneo --
+
+$ cd /usr/local/var/postgres
+$ code pg_hba.conf
+
+Cambiar lineas de archivo de trust a password
+
+brew services restart postgresql
+
+psql -U platzi platziverse -> no lo dejara loguear si no ingresa el password que es

@@ -31,3 +31,7 @@ default: SSH username: vagrant
 default: SSH auth method: private key
 
 $ ansible-playbook -i inventory.ini backend.yml --private-key ssh/deploy
+
+$ sudo su
+$ nano /etc/ssh/sshd_config
+$ service ssh restart
