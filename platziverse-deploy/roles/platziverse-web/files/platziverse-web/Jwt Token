@@ -1,0 +1,7 @@
+auth.sign({
+  username: 'admin',
+  admin: true,
+  permissions: [
+    'metrics: read'
+  ]
+}, 'platzi', console.log)
